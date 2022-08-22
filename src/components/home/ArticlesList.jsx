@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { DefaultTopics } from "../../Globals";
 import { getAllArticles } from "../../utils/http/nc-api";
 import ArticlesListItem from "./ArticlesListItem";
 

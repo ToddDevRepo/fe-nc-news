@@ -8,3 +8,7 @@ const getByEndpoint = (endpoint) => {
 export const getAllArticles = () => {
   return getByEndpoint(Endpoints.NC_NEWS_ARTICLES_END);
 };
+
+export const getAllTopics = () => {
+  return getByEndpoint(Endpoints.NC_NEWS_TOPICS);
+};
