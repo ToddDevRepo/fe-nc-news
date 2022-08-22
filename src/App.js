@@ -7,8 +7,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <TopicSelector />
-      <ArticlesList />
+      <main>
+        <TopicSelector />
+        <ArticlesList />
+      </main>
     </div>
   );
 }
