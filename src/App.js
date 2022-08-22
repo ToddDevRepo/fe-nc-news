@@ -17,7 +17,7 @@ function App() {
           selectedTopic={selectedTopic}
           setSelectedTopic={setSelectedTopic}
         />
-        <ArticlesList />
+        <ArticlesList selectedTopic={selectedTopic} />
       </main>
     </div>
   );

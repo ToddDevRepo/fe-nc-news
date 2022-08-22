@@ -3,10 +3,11 @@ import { DefaultTopics } from "../../Globals";
 import { getAllArticles } from "../../utils/http/nc-api";
 import ArticlesListItem from "./ArticlesListItem";
 
-const ArticlesList = () => {
+const ArticlesList = ({ selectedTopic }) => {
   const [newsArticles, setNewsArticles] = useState([]);
   useEffect(() => {
-    getAllArticles().then(({ articles }) => {
+    const articlePromise = getAllArticles();
+    articlePromise.then(({ articles }) => {
       setNewsArticles(articles);
     });
   }, []);
