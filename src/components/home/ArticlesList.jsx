@@ -1,5 +1,24 @@
+import { useEffect, useState } from "react";
+import { getAllArticles } from "../../utils/http/nc-api";
+import ArticlesListItem from "./ArticlesListItem";
+
 const ArticlesList = () => {
-  return <section id="section__articles-list">Articles</section>;
+  const [newsArticles, setNewsArticles] = useState([]);
+  useEffect(() => {
+    getAllArticles().then(({ articles }) => {
+      setNewsArticles(articles);
+    });
+  }, []);
+
+  return (
+    <section id="section__articles-list">
+      <ul className="list__undecorated">
+        {newsArticles.map((article) => {
+          return <ArticlesListItem article={article} />;
+        })}
+      </ul>
+    </section>
+  );
 };
 
 export default ArticlesList;
