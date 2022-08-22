@@ -10,6 +10,7 @@ const TopicSelector = ({ selectedTopic, setSelectedTopic }) => {
     getAllTopics().then(({ topics }) => {
       topics.unshift(DefaultTopics.TOPICS_ALL);
       setAvailableTopics(topics);
+      setSelectedTopic(DefaultTopics.TOPICS_ALL);
     });
   }, []);
 
