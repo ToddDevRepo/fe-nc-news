@@ -6,3 +6,10 @@ export class Endpoints {
   static NC_NEWS_API_END = "/api";
   static NC_NEWS_ARTICLES_END = `${Endpoints.NC_NEWS_API_END}/articles`;
 }
+
+export class DefaultTopics {
+  static TOPICS_ALL = {
+    slug: "All Topics",
+    description: "Show articles for all topics",
+  };
+}
