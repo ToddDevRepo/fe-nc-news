@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DefaultTopics } from "../../Globals";
+import IsLoading from "../IsLoading";
 import ArticlesList from "./ArticlesList";
 import TopicSelector from "./TopicSelector";
 
@@ -14,7 +15,7 @@ const Home = () => {
         selectedTopic={selectedTopic}
         setSelectedTopic={setSelectedTopic}
       />
-      <ArticlesList selectedTopic={selectedTopic} />
+      <ArticlesList selectedTopic={selectedTopic} />)
     </>
   );
 };
