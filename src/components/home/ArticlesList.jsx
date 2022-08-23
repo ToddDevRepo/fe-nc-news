@@ -22,7 +22,11 @@ const ArticlesList = ({ selectedTopic }) => {
     <section id="section__articles-list">
       <ul className="list__undecorated">
         {newsArticles.map((article) => {
-          return <ArticlesListItem article={article} />;
+          return (
+            <li key={article.article_id} className="list__article-item">
+              <ArticlesListItem article={article} />;
+            </li>
+          );
         })}
       </ul>
     </section>
