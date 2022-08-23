@@ -1,6 +1,5 @@
 import axios from "axios";
-import { Endpoints, QueryKeys, Urls } from "../../Globals";
-import { getAsJson } from "./http-requester";
+import { Endpoints, Urls } from "../../Globals";
 
 const ncRequester = axios.create({
   baseURL: Urls.NC_NEWS_URL,
@@ -23,4 +22,8 @@ export const getArticlesFilteredByTopic = (topic) => {
 
 export const getAllTopics = () => {
   return getByEndpoint(Endpoints.NC_NEWS_TOPICS);
+};
+
+export const getArticleById = (id) => {
+  return getByEndpoint(`${Endpoints.NC_NEWS_ARTICLES_END}/${id}`);
 };

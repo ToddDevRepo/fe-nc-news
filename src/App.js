@@ -1,23 +1,22 @@
-import { useState } from "react";
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import ArticlesList from "./components/home/ArticlesList";
-import TopicSelector from "./components/home/TopicSelector";
-import { DefaultTopics } from "./Globals";
+import Home from "./components/home/Home";
+import { InternalEndpoints } from "./Globals";
+import ArticleView from "./components/article/ArticleView";
 
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState([
-    DefaultTopics.TOPICS_ALL,
-  ]);
   return (
     <div className="App">
       <Header />
       <main>
-        <TopicSelector
-          selectedTopic={selectedTopic}
-          setSelectedTopic={setSelectedTopic}
-        />
-        <ArticlesList selectedTopic={selectedTopic} />
+        <Routes>
+          <Route path={InternalEndpoints.HOME_END} element={<Home />} />
+          <Route
+            path={InternalEndpoints.ARTICLES_BY_ID_END}
+            element={<ArticleView />}
+          />
+        </Routes>
       </main>
     </div>
   );

@@ -8,6 +8,12 @@ export class Endpoints {
   static NC_NEWS_TOPICS = `${Endpoints.NC_NEWS_API_END}/topics`;
 }
 
+export class InternalEndpoints {
+  static HOME_END = "/";
+  static ARTICLES_END = `${InternalEndpoints.HOME_END}articles`;
+  static ARTICLES_BY_ID_END = `${InternalEndpoints.ARTICLES_END}/:article_id`;
+}
+
 export class DefaultTopics {
   static TOPICS_ALL = {
     slug: "All Topics",
