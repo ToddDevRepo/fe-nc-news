@@ -9,6 +9,7 @@ function App() {
   const [selectedTopic, setSelectedTopic] = useState([
     DefaultTopics.TOPICS_ALL,
   ]);
+
   return (
     <div className="App">
       <Header />
