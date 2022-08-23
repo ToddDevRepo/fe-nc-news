@@ -1,7 +1,6 @@
 import { timeStamp2Date } from "../../utils/time-utils";
 
 const ArticlesListItem = ({ article }) => {
-  // title, author, topic, body, created_at,
   return (
     <li key={article.article_id} className="list__article-item">
       <h4>{article.title}</h4>
