@@ -1,24 +1,16 @@
-import { useState } from "react";
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import ArticlesList from "./components/home/ArticlesList";
-import TopicSelector from "./components/home/TopicSelector";
-import { DefaultTopics } from "./Globals";
+import Home from "./components/home/Home";
 
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState([
-    DefaultTopics.TOPICS_ALL,
-  ]);
-
   return (
     <div className="App">
       <Header />
       <main>
-        <TopicSelector
-          selectedTopic={selectedTopic}
-          setSelectedTopic={setSelectedTopic}
-        />
-        <ArticlesList selectedTopic={selectedTopic} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
       </main>
     </div>
   );
