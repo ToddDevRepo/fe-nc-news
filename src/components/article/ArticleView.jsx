@@ -31,7 +31,9 @@ const ArticleView = () => {
           <p>#{displayedArticle.topic}</p>
           <p>{displayedArticle.body}</p>
           <p>
-            <span>Comments: {displayedArticle.comment_count}</span>
+            <button onClick={() => {}}>
+              Comments: {displayedArticle.comment_count}
+            </button>
             <span> Votes: {displayedArticle.votes}</span>
           </p>
         </>

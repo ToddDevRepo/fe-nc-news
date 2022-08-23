@@ -20,10 +20,14 @@ export const getArticlesFilteredByTopic = (topic) => {
   return getByEndpoint(Endpoints.NC_NEWS_ARTICLES_END, { topic: topic });
 };
 
+export const getArticleById = (id) => {
+  return getByEndpoint(`${Endpoints.NC_NEWS_ARTICLES_END}/${id}`);
+};
+
 export const getAllTopics = () => {
   return getByEndpoint(Endpoints.NC_NEWS_TOPICS);
 };
 
-export const getArticleById = (id) => {
-  return getByEndpoint(`${Endpoints.NC_NEWS_ARTICLES_END}/${id}`);
+export const getAllComments = (id) => {
+  return getByEndpoint(`${Endpoints.NC_NEWS_ARTICLES_END};${id}/comments`);
 };
