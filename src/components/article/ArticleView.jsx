@@ -4,7 +4,6 @@ import { getArticleById } from "../../utils/http/nc-api";
 import { timeStamp2Date } from "../../utils/time-utils";
 
 const ArticleView = () => {
-  // article_id, topic, title, author, body,  created_at, comments_count, votes
   const { article_id } = useParams();
   const [displayedArticle, setDisplayedArticle] = useState({});
   useEffect(() => {
