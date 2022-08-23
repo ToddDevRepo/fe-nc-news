@@ -1,16 +1,22 @@
 import { useEffect, useState } from "react";
 import { DefaultTopics } from "../../Globals";
-import { getAllArticles } from "../../utils/http/nc-api";
+import {
+  getAllArticles,
+  getArticlesFilteredByTopic,
+} from "../../utils/http/nc-api";
 import ArticlesListItem from "./ArticlesListItem";
 
 const ArticlesList = ({ selectedTopic }) => {
   const [newsArticles, setNewsArticles] = useState([]);
   useEffect(() => {
-    const articlePromise = getAllArticles();
-    articlePromise.then(({ articles }) => {
+    const getArticlePromise =
+      selectedTopic === DefaultTopics.TOPICS_ALL
+        ? getAllArticles()
+        : getArticlesFilteredByTopic(selectedTopic.slug);
+    getArticlePromise.then(({ articles }) => {
       setNewsArticles(articles);
     });
-  }, []);
+  }, [selectedTopic]);
 
   return (
     <section id="section__articles-list">

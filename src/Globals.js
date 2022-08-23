@@ -11,6 +11,6 @@ export class Endpoints {
 export class DefaultTopics {
   static TOPICS_ALL = {
     slug: "All Topics",
-    description: "Show articles for all topics",
+    description: "Viewing all articles.",
   };
 }

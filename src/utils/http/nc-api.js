@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Endpoints, Urls } from "../../Globals";
+import { Endpoints, QueryKeys, Urls } from "../../Globals";
 import { getAsJson } from "./http-requester";
 
 const ncRequester = axios.create({
@@ -15,6 +15,10 @@ const getByEndpoint = (endpoint, queryObj) => {
 
 export const getAllArticles = () => {
   return getByEndpoint(Endpoints.NC_NEWS_ARTICLES_END);
+};
+
+export const getArticlesFilteredByTopic = (topic) => {
+  return getByEndpoint(Endpoints.NC_NEWS_ARTICLES_END, { topic: topic });
 };
 
 export const getAllTopics = () => {
