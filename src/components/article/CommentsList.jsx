@@ -1,7 +1,40 @@
-const CommentsList = () => {
+import { useEffect, useState } from "react";
+import { getAllComments } from "../../utils/http/nc-api";
+import IsLoading from "../IsLoading";
+import CommentItem from "./CommentItem";
+
+const CommentsList = ({ article_id }) => {
+  const [articleComments, setArticleComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    getAllComments(article_id).then(({ comments }) => {
+      setArticleComments((curComments) => {
+        setIsLoading(false);
+        return comments;
+      });
+    });
+  }, [article_id]);
+
   return (
     <section className="section__comments-list">
-      <h5>Comments:</h5>
+      {!isLoading ? (
+        <>
+          <h5>Comments:</h5>
+          <ul className="list__undecorated">
+            {articleComments.map((comment) => {
+              return (
+                <li key={comment.comment_id}>
+                  <CommentItem />
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      ) : (
+        <IsLoading />
+      )}
     </section>
   );
 };
+
+export default CommentsList;

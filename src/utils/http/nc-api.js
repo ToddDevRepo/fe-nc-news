@@ -29,5 +29,5 @@ export const getAllTopics = () => {
 };
 
 export const getAllComments = (id) => {
-  return getByEndpoint(`${Endpoints.NC_NEWS_ARTICLES_END};${id}/comments`);
+  return getByEndpoint(`${Endpoints.NC_NEWS_ARTICLES_END}/${id}/comments`);
 };

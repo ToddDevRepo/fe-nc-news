@@ -41,6 +41,10 @@
   list-style: none;
 }
 
+.link__undecorated {
+  text-decoration: none;
+}
+
 .list__article-item {
   border-width: 5px;
   border-style: solid;
