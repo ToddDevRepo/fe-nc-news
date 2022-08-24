@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
-  decrementArticleVotesByOne,
+  changeArticleVoteAtServerBy,
   getAllComments,
   getArticleById,
-  incrementArticleVotesByOne,
 } from "../../utils/http/nc-api";
 import { timeStamp2Date } from "../../utils/time-utils";
 import IsLoading from "../IsLoading";
@@ -25,10 +24,19 @@ const ArticleView = () => {
     });
   }, []);
 
-  const changeVotesBy = (num) => {
+  const updateVoteBy = (num) => {
     setArticleVotes((curVotes) => {
       return curVotes + num;
     });
+    changeArticleVoteAtServerBy(num, article_id)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        setArticleVotes((curVotes) => {
+          return curVotes - num;
+        });
+      });
   };
 
   return (
@@ -57,10 +65,7 @@ const ArticleView = () => {
                 id="button__up-vote-article"
                 aria-label="up vote article"
                 onClick={() => {
-                  changeVotesBy(1);
-                  incrementArticleVotesByOne(article_id).then((result) => {
-                    console.log(result);
-                  });
+                  updateVoteBy(1);
                 }}
               >
                 &#708;
@@ -70,10 +75,7 @@ const ArticleView = () => {
                 id="button__dn-vote-article"
                 aria-label="down vote article"
                 onClick={(result) => {
-                  changeVotesBy(-1);
-                  decrementArticleVotesByOne(article_id).then((result) => {
-                    console.log(result);
-                  });
+                  updateVoteBy(-1);
                 }}
               >
                 &#709;
