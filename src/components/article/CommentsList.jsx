@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Endpoints, InternalEndpoints } from "../../Globals";
 import { getAllComments } from "../../utils/http/nc-api";
 import IsLoading from "../IsLoading";
 import CommentListItem from "./CommentListItem";
@@ -20,6 +22,12 @@ const CommentsList = ({ article_id }) => {
       {!isLoading ? (
         <>
           <h5>Comments:</h5>
+          <Link
+            id="linkbut__add-comment"
+            to={`${InternalEndpoints.ARTICLES_END}/${article_id}/comment`}
+          >
+            Add Comment
+          </Link>
           <ul className="list__undecorated">
             {articleComments.map((comment) => {
               return (
