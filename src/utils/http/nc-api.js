@@ -40,7 +40,10 @@ export const getAllComments = (id) => {
 
 const changeArticleVoteBy = (numOfVotes, article_id) => {
   const payload = { inc_votes: numOfVotes };
-  return patchByEndpoint(`${Endpoints.NC_NEWS_ARTICLES_END}/${article_id}`);
+  return patchByEndpoint(
+    `${Endpoints.NC_NEWS_ARTICLES_END}/${article_id}`,
+    payload
+  );
 };
 
 export const incrementArticleVotesByOne = (article_id) => {

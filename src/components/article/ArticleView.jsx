@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getAllComments, getArticleById } from "../../utils/http/nc-api";
+import {
+  decrementArticleVotesByOne,
+  getAllComments,
+  getArticleById,
+  incrementArticleVotesByOne,
+} from "../../utils/http/nc-api";
 import { timeStamp2Date } from "../../utils/time-utils";
 import IsLoading from "../IsLoading";
 import CommentsList from "./CommentsList";
@@ -44,7 +49,11 @@ const ArticleView = () => {
               <button
                 id="button__up-vote-article"
                 aria-label="up vote article"
-                onClick={() => {}}
+                onClick={() => {
+                  incrementArticleVotesByOne(article_id).then((result) => {
+                    console.log(result);
+                  });
+                }}
               >
                 &#708;
               </button>
@@ -52,7 +61,11 @@ const ArticleView = () => {
               <button
                 id="button__dn-vote-article"
                 aria-label="down vote article"
-                onClick={() => {}}
+                onClick={(result) => {
+                  decrementArticleVotesByOne(article_id).then((result) => {
+                    console.log(result);
+                  });
+                }}
               >
                 &#709;
               </button>
