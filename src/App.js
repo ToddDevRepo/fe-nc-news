@@ -27,10 +27,6 @@ function App() {
               path={InternalEndpoints.ARTICLES_BY_ID_END}
               element={<ArticleView />}
             />
-            <Route
-              path={InternalEndpoints.COMMENT_ON_ARTICLE_END}
-              element={<PostComment />}
-            />
           </Routes>
         </main>
       </div>

@@ -30,9 +30,7 @@ const ArticleView = () => {
       return curVotes + num;
     });
     changeArticleVoteAtServerBy(num, article_id)
-      .then((result) => {
-        console.log(result);
-      })
+      .then((result) => {})
       .catch((error) => {
         setArticleVotes((curVotes) => {
           return curVotes - num;
