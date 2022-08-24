@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { InternalEndpoints } from "../Globals";
+import UserAccountWidget from "./UserAccountWidget";
 
 const Header = () => {
   return (
@@ -10,6 +11,7 @@ const Header = () => {
         </Link>
       </h1>
       <h2>A place for all your NC news!</h2>
+      <UserAccountWidget />
     </header>
   );
 };

@@ -37,6 +37,21 @@
   }
 }
 
+#widget__current-user {
+}
+
+#img__user-icon {
+  width: 5%;
+  border: 4px;
+  border-color: rgb(164, 64, 64);
+}
+
+#widget__username {
+  font-size: 0.4rem;
+  margin: 0;
+  padding: 0;
+}
+
 .list__undecorated {
   list-style: none;
 }
