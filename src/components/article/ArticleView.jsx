@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { VoteConfig } from "../../Globals";
 import {
   changeArticleVoteAtServerBy,
   getAllComments,
@@ -64,7 +65,7 @@ const ArticleView = () => {
               <button
                 id="button__up-vote-article"
                 aria-label="up vote article"
-                onClick={() => updateVoteBy(1)}
+                onClick={() => updateVoteBy(VoteConfig.ARTICLE_VOTE_INC)}
               >
                 &#708;
               </button>
@@ -72,7 +73,7 @@ const ArticleView = () => {
               <button
                 id="button__dn-vote-article"
                 aria-label="down vote article"
-                onClick={() => updateVoteBy(-1)}
+                onClick={() => updateVoteBy(VoteConfig.ARTICLE_VOTE_DEC)}
               >
                 &#709;
               </button>

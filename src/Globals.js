@@ -20,3 +20,8 @@ export class DefaultTopics {
     description: "Viewing all articles.",
   };
 }
+
+export class VoteConfig {
+  static ARTICLE_VOTE_INC = 1;
+  static ARTICLE_VOTE_DEC = -1;
+}
