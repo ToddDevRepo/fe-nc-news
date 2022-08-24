@@ -12,6 +12,7 @@ export class InternalEndpoints {
   static HOME_END = "/";
   static ARTICLES_END = `${InternalEndpoints.HOME_END}articles`;
   static ARTICLES_BY_ID_END = `${InternalEndpoints.ARTICLES_END}/:article_id`;
+  static COMMENT_ON_ARTICLE_END = `${InternalEndpoints.ARTICLES_END}/:article_id/comment`;
 }
 
 export class DefaultTopics {
