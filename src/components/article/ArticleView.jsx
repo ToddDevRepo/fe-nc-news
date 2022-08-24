@@ -41,7 +41,21 @@ const ArticleView = () => {
               >
                 Comments: {displayedArticle.comment_count}
               </button>
+              <button
+                id="button__up-vote-article"
+                aria-label="up vote article"
+                onClick={() => {}}
+              >
+                &#708;
+              </button>
               <span> Votes: {displayedArticle.votes}</span>
+              <button
+                id="button__dn-vote-article"
+                aria-label="down vote article"
+                onClick={() => {}}
+              >
+                &#709;
+              </button>
             </p>
           </>
         )}
