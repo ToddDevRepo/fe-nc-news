@@ -15,6 +15,7 @@ const ArticleView = () => {
   const { article_id } = useParams();
   const [displayedArticle, setDisplayedArticle] = useState({});
   const [showComments, setShowComments] = useState(false);
+  const [articleVotes, setArticleVotes] = useState(0);
   useEffect(() => {
     getArticleById(article_id).then(({ article }) => {
       setDisplayedArticle((curArticle) => {
@@ -23,6 +24,12 @@ const ArticleView = () => {
       });
     });
   }, []);
+
+  const changeVotesBy = (num) => {
+    setArticleVotes((curVotes) => {
+      return curVotes + num;
+    });
+  };
 
   return (
     <>
@@ -50,6 +57,7 @@ const ArticleView = () => {
                 id="button__up-vote-article"
                 aria-label="up vote article"
                 onClick={() => {
+                  changeVotesBy(1);
                   incrementArticleVotesByOne(article_id).then((result) => {
                     console.log(result);
                   });
@@ -57,11 +65,12 @@ const ArticleView = () => {
               >
                 &#708;
               </button>
-              <span> Votes: {displayedArticle.votes}</span>
+              <span> Votes: {displayedArticle.votes + articleVotes}</span>
               <button
                 id="button__dn-vote-article"
                 aria-label="down vote article"
                 onClick={(result) => {
+                  changeVotesBy(-1);
                   decrementArticleVotesByOne(article_id).then((result) => {
                     console.log(result);
                   });
