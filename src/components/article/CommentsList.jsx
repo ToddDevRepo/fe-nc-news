@@ -22,12 +22,7 @@ const CommentsList = ({ article_id }) => {
       {!isLoading ? (
         <>
           <h5>Comments:</h5>
-          <Link
-            id="linkbut__add-comment"
-            to={`${InternalEndpoints.ARTICLES_END}/${article_id}/comment`}
-          >
-            Add Comment
-          </Link>
+          <button onClick={() => {}}>Add Comment</button>
           <ul className="list__undecorated">
             {articleComments.map((comment) => {
               return (
