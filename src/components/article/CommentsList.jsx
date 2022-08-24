@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Endpoints, InternalEndpoints } from "../../Globals";
 import { getAllComments } from "../../utils/http/nc-api";
+import PostComment from "../comment/PostComment";
 import IsLoading from "../IsLoading";
 import CommentListItem from "./CommentListItem";
 
 const CommentsList = ({ article_id }) => {
   const [articleComments, setArticleComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isPostingComment, setIsPostingComment] = useState(false);
   useEffect(() => {
     getAllComments(article_id).then(({ comments }) => {
       setArticleComments((curComments) => {
@@ -22,7 +24,17 @@ const CommentsList = ({ article_id }) => {
       {!isLoading ? (
         <>
           <h5>Comments:</h5>
-          <button onClick={() => {}}>Add Comment</button>
+          <button
+            onClick={() => {
+              setIsPostingComment((curIsPosting) => {
+                console.log(curIsPosting);
+                return !curIsPosting;
+              });
+            }}
+          >
+            Add Comment
+          </button>
+          {isPostingComment && <PostComment />}
           <ul className="list__undecorated">
             {articleComments.map((comment) => {
               return (

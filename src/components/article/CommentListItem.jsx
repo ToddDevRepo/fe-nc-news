@@ -8,7 +8,7 @@ const CommentListItem = ({ comment }) => {
         <span>Created: {timeStamp2Date(comment.created_at)} </span>
         <span>Votes: {comment.votes} </span>
       </p>
-      <p>{comment.body}</p>;
+      <p>{comment.body}</p>
     </>
   );
 };
