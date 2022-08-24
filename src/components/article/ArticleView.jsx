@@ -64,9 +64,7 @@ const ArticleView = () => {
               <button
                 id="button__up-vote-article"
                 aria-label="up vote article"
-                onClick={() => {
-                  updateVoteBy(1);
-                }}
+                onClick={() => updateVoteBy(1)}
               >
                 &#708;
               </button>
@@ -74,9 +72,7 @@ const ArticleView = () => {
               <button
                 id="button__dn-vote-article"
                 aria-label="down vote article"
-                onClick={(result) => {
-                  updateVoteBy(-1);
-                }}
+                onClick={() => updateVoteBy(-1)}
               >
                 &#709;
               </button>
