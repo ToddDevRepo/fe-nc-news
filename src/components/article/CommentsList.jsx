@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllComments } from "../../utils/http/nc-api";
 import IsLoading from "../IsLoading";
-import CommentItem from "./CommentItem";
+import CommentListItem from "./CommentListItem";
 
 const CommentsList = ({ article_id }) => {
   const [articleComments, setArticleComments] = useState([]);
@@ -24,7 +24,7 @@ const CommentsList = ({ article_id }) => {
             {articleComments.map((comment) => {
               return (
                 <li key={comment.comment_id}>
-                  <CommentItem />
+                  <CommentListItem comment={comment} />
                 </li>
               );
             })}
