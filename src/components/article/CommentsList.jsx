@@ -12,6 +12,12 @@ const CommentsList = ({ article_id }) => {
   const [isPostingComment, setIsPostingComment] = useState(false);
   useEffect(() => {
     getAllComments(article_id).then(({ comments }) => {
+      comments.sort((commentA, commentB) => {
+        const diff =
+          new Date(commentA.created_at).getTime() -
+          new Date(commentB.created_at).getTime();
+        return diff;
+      });
       setArticleComments((curComments) => {
         setIsLoading(false);
         return comments;
