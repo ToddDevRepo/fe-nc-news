@@ -6,6 +6,10 @@ export class Endpoints {
   static NC_NEWS_API_END = "/api";
   static NC_NEWS_ARTICLES_END = `${Endpoints.NC_NEWS_API_END}/articles`;
   static NC_NEWS_TOPICS = `${Endpoints.NC_NEWS_API_END}/topics`;
+
+  static makeCommentsEndpoint(articleId) {
+    return `${Endpoints.NC_NEWS_ARTICLES_END}/${articleId}/comments`;
+  }
 }
 
 export class InternalEndpoints {

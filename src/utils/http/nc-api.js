@@ -18,6 +18,12 @@ const patchByEndpoint = (endpoint, payload) => {
   });
 };
 
+const postByEndpoint = (endpoint, payload) => {
+  return ncRequester.post(endpoint, payload).then(({ data }) => {
+    return data;
+  });
+};
+
 export const getAllArticles = () => {
   return getByEndpoint(Endpoints.NC_NEWS_ARTICLES_END);
 };
@@ -35,7 +41,7 @@ export const getAllTopics = () => {
 };
 
 export const getAllComments = (id) => {
-  return getByEndpoint(`${Endpoints.NC_NEWS_ARTICLES_END}/${id}/comments`);
+  return getByEndpoint(Endpoints.makeCommentsEndpoint(id));
 };
 
 export const changeArticleVoteAtServerBy = (numOfVotes, article_id) => {
@@ -43,5 +49,13 @@ export const changeArticleVoteAtServerBy = (numOfVotes, article_id) => {
   return patchByEndpoint(
     `${Endpoints.NC_NEWS_ARTICLES_END}/${article_id}`,
     payload
+  );
+};
+
+export const postNewCommentForArticle = (article_id, username, comment) => {
+  const commentData = { username: username, body: comment };
+  return postByEndpoint(
+    Endpoints.makeCommentsEndpoint(article_id),
+    commentData
   );
 };
