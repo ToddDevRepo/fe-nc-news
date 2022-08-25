@@ -57,6 +57,14 @@
   text-decoration: none;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
 .list__article-item {
   border-width: 5px;
   border-style: solid;
