@@ -17,7 +17,6 @@ const ArticlesList = ({ selectedTopic, selectedSort }) => {
     const query = { ...selectedSort };
     if (selectedTopic !== DefaultTopics.TOPICS_ALL)
       query.topic = selectedTopic.slug;
-    console.dir(query);
     getArticlesWithQuery(query).then(({ articles }) => {
       setNewsArticles((curArticles) => {
         setIsLoading(false);

@@ -24,14 +24,6 @@ const postByEndpoint = (endpoint, payload) => {
   });
 };
 
-export const getAllArticles = () => {
-  return getByEndpoint(Endpoints.NC_NEWS_ARTICLES_END);
-};
-
-export const getArticlesFilteredByTopic = (topic) => {
-  return getByEndpoint(Endpoints.NC_NEWS_ARTICLES_END, { topic: topic });
-};
-
 export const getArticlesWithQuery = (query) => {
   return getByEndpoint(Endpoints.NC_NEWS_ARTICLES_END, query);
 };
