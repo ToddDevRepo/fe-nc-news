@@ -21,7 +21,6 @@ const Home = () => {
       />
       <ArticleSorter setSelectedSort={setSelectedSort} />
       <ArticlesList selectedTopic={selectedTopic} selectedSort={selectedSort} />
-      )
     </>
   );
 };

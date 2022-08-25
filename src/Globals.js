@@ -27,7 +27,7 @@ export class DefaultTopics {
 }
 
 export class DefaultArticleSorts {
-  static DATE_DESC = { order: "date", sort_by: "desc" };
+  static DATE_DESC = { sort_by: "date", order: "desc" };
 }
 
 export class VoteConfig {

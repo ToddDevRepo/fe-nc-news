@@ -5,15 +5,16 @@ const ArticleSorter = ({ setSelectedSort }) => {
     Votes: "votes",
   };
   const availableOrders = {
-    Ascending: "asc",
     Descending: "desc",
+    Ascending: "asc",
   };
 
   return (
     <section id="section__article-sorter">
       <select
         onChange={(event) => {
-          const sort_by = availableSorts[event.target.value];
+          const sort_by = event.target.value;
+          console.log("Value: " + sort_by);
           setSelectedSort((curSort) => {
             return { ...curSort, sort_by: sort_by };
           });
@@ -30,7 +31,7 @@ const ArticleSorter = ({ setSelectedSort }) => {
       </select>
       <select
         onChange={(event) => {
-          const order = availableOrders[event.target.value];
+          const order = event.target.value;
           setSelectedSort((curSort) => {
             return { ...curSort, order: order };
           });
