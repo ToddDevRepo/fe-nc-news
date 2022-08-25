@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getAllComments, getArticleById } from "../../utils/http/nc-api";
+import { VoteConfig } from "../../Globals";
+import {
+  changeArticleVoteAtServerBy,
+  getAllComments,
+  getArticleById,
+} from "../../utils/http/nc-api";
 import { timeStamp2Date } from "../../utils/time-utils";
 import IsLoading from "../IsLoading";
 import CommentsList from "./CommentsList";
@@ -10,6 +15,7 @@ const ArticleView = () => {
   const { article_id } = useParams();
   const [displayedArticle, setDisplayedArticle] = useState({});
   const [showComments, setShowComments] = useState(false);
+  const [articleVotes, setArticleVotes] = useState(0);
   useEffect(() => {
     getArticleById(article_id).then(({ article }) => {
       setDisplayedArticle((curArticle) => {
@@ -18,6 +24,19 @@ const ArticleView = () => {
       });
     });
   }, []);
+
+  const updateVoteBy = (num) => {
+    setArticleVotes((curVotes) => {
+      return curVotes + num;
+    });
+    changeArticleVoteAtServerBy(num, article_id)
+      .then((result) => {})
+      .catch((error) => {
+        setArticleVotes((curVotes) => {
+          return curVotes - num;
+        });
+      });
+  };
 
   return (
     <>
@@ -41,12 +60,31 @@ const ArticleView = () => {
               >
                 Comments: {displayedArticle.comment_count}
               </button>
-              <span> Votes: {displayedArticle.votes}</span>
+              <button
+                id="button__up-vote-article"
+                aria-label="up vote article"
+                onClick={() => updateVoteBy(VoteConfig.ARTICLE_VOTE_INC)}
+              >
+                &#708;
+              </button>
+              <span> Votes: {displayedArticle.votes + articleVotes}</span>
+              <button
+                id="button__dn-vote-article"
+                aria-label="down vote article"
+                onClick={() => updateVoteBy(VoteConfig.ARTICLE_VOTE_DEC)}
+              >
+                &#709;
+              </button>
             </p>
           </>
         )}
       </section>
-      {showComments && <CommentsList article_id={article_id} />}
+      {showComments && (
+        <CommentsList
+          article_id={article_id}
+          setDisplayedArticle={setDisplayedArticle}
+        />
+      )}
     </>
   );
 };

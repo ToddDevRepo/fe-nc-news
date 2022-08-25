@@ -37,12 +37,32 @@
   }
 }
 
+#img__user-icon {
+  width: 5%;
+  border: 4px;
+  border-color: rgb(164, 64, 64);
+}
+
+#widget__username {
+  font-size: 0.4rem;
+  margin: 0;
+  padding: 0;
+}
+
 .list__undecorated {
   list-style: none;
 }
 
 .link__undecorated {
   text-decoration: none;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
 }
 
 .list__article-item {
