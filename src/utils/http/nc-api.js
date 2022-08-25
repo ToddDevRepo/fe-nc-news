@@ -32,6 +32,10 @@ export const getArticlesFilteredByTopic = (topic) => {
   return getByEndpoint(Endpoints.NC_NEWS_ARTICLES_END, { topic: topic });
 };
 
+export const getArticlesWithQuery = (query) => {
+  return getByEndpoint(Endpoints.NC_NEWS_ARTICLES_END, query);
+};
+
 export const getArticleById = (id) => {
   return getByEndpoint(`${Endpoints.NC_NEWS_ARTICLES_END}/${id}`);
 };
