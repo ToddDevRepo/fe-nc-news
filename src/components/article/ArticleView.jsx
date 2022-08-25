@@ -79,7 +79,12 @@ const ArticleView = () => {
           </>
         )}
       </section>
-      {showComments && <CommentsList article_id={article_id} />}
+      {showComments && (
+        <CommentsList
+          article_id={article_id}
+          setDisplayedArticle={setDisplayedArticle}
+        />
+      )}
     </>
   );
 };

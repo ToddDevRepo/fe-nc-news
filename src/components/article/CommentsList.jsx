@@ -6,7 +6,7 @@ import PostComment from "../comment/PostComment";
 import IsLoading from "../IsLoading";
 import CommentListItem from "./CommentListItem";
 
-const CommentsList = ({ article_id }) => {
+const CommentsList = ({ article_id, setDisplayedArticle }) => {
   const [articleComments, setArticleComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isPostingComment, setIsPostingComment] = useState(false);
@@ -39,7 +39,13 @@ const CommentsList = ({ article_id }) => {
           >
             Add Comment
           </button>
-          {isPostingComment && <PostComment article_id={article_id} />}
+          {isPostingComment && (
+            <PostComment
+              article_id={article_id}
+              setArticleComments={setArticleComments}
+              setDisplayedArticle={setDisplayedArticle}
+            />
+          )}
           <ul className="list__undecorated">
             {articleComments.map((comment) => {
               return (

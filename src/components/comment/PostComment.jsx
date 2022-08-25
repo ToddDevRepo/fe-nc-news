@@ -2,7 +2,11 @@ import { useContext, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { postNewCommentForArticle } from "../../utils/http/nc-api";
 
-const PostComment = ({ article_id }) => {
+const PostComment = ({
+  article_id,
+  setArticleComments,
+  setDisplayedArticle,
+}) => {
   const { currentUser } = useContext(CurrentUserContext);
   const [commentBody, setCommentBody] = useState("");
 
@@ -13,8 +17,15 @@ const PostComment = ({ article_id }) => {
       article_id,
       currentUser.username,
       commentBody
-    ).then((result) => {
-      console.log(result);
+    ).then(({ comment }) => {
+      setArticleComments((curComments) => {
+        const newCommentsList = [...curComments, comment];
+        setDisplayedArticle((curArticle) => {
+          return { ...curArticle, comment_count: newCommentsList.length };
+        });
+        return newCommentsList;
+      });
+
       setCommentBody("");
     });
   };
@@ -23,7 +34,7 @@ const PostComment = ({ article_id }) => {
     <section id="section__post-comment">
       <h3>Post your comment:</h3>
       <form id="form__post-comment" onSubmit={handlePostComment}>
-        <label for="textarea__post-comment">Body:</label>
+        <label htmlFor="textarea__post-comment">Body:</label>
         <textarea
           id="textarea__post-comment"
           name="body"
