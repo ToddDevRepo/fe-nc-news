@@ -8,11 +8,12 @@ import {
 import IsLoading from "../IsLoading";
 import ArticlesListItem from "./ArticlesListItem";
 
-const ArticlesList = ({ selectedTopic }) => {
+const ArticlesList = ({ selectedTopic, selectedSort }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [newsArticles, setNewsArticles] = useState([]);
   useEffect(() => {
     setIsLoading(true);
+
     const getArticlePromise =
       selectedTopic === DefaultTopics.TOPICS_ALL
         ? getAllArticles()

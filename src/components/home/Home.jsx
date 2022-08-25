@@ -1,13 +1,17 @@
 import { useState } from "react";
-import { DefaultTopics } from "../../Globals";
+import { DefaultArticleSorts, DefaultTopics } from "../../Globals";
 import IsLoading from "../IsLoading";
 import ArticlesList from "./ArticlesList";
+import ArticleSorter from "./ArticleSorter";
 import TopicSelector from "./TopicSelector";
 
 const Home = () => {
   const [selectedTopic, setSelectedTopic] = useState([
     DefaultTopics.TOPICS_ALL,
   ]);
+  const [selectedSort, setSelectedSort] = useState(
+    DefaultArticleSorts.DATE_DESC
+  );
 
   return (
     <>
@@ -15,7 +19,9 @@ const Home = () => {
         selectedTopic={selectedTopic}
         setSelectedTopic={setSelectedTopic}
       />
-      <ArticlesList selectedTopic={selectedTopic} />)
+      <ArticleSorter setSelectedSort={setSelectedSort} />
+      <ArticlesList selectedTopic={selectedTopic} selectedSort={selectedSort} />
+      )
     </>
   );
 };
