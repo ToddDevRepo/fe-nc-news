@@ -1,15 +1,22 @@
 import { useContext, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { postNewCommentForArticle } from "../../utils/http/nc-api";
 
-const PostComment = () => {
+const PostComment = ({ article_id }) => {
   const { currentUser } = useContext(CurrentUserContext);
   const [commentBody, setCommentBody] = useState("");
 
   const handlePostComment = (event) => {
     event.preventDefault();
     console.log(commentBody);
-
-    setCommentBody("");
+    postNewCommentForArticle(
+      article_id,
+      currentUser.username,
+      commentBody
+    ).then((result) => {
+      console.log(result);
+      setCommentBody("");
+    });
   };
 
   return (

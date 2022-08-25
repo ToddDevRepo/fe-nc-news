@@ -27,14 +27,13 @@ const CommentsList = ({ article_id }) => {
           <button
             onClick={() => {
               setIsPostingComment((curIsPosting) => {
-                console.log(curIsPosting);
                 return !curIsPosting;
               });
             }}
           >
             Add Comment
           </button>
-          {isPostingComment && <PostComment />}
+          {isPostingComment && <PostComment article_id={article_id} />}
           <ul className="list__undecorated">
             {articleComments.map((comment) => {
               return (
