@@ -26,6 +26,10 @@ export class DefaultTopics {
   };
 }
 
+export class DefaultArticleSorts {
+  static DATE_DESC = { sort_by: "date", order: "desc" };
+}
+
 export class VoteConfig {
   static ARTICLE_VOTE_INC = 1;
   static ARTICLE_VOTE_DEC = -1;

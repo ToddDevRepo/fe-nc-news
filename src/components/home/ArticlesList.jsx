@@ -4,26 +4,27 @@ import { DefaultTopics, InternalEndpoints } from "../../Globals";
 import {
   getAllArticles,
   getArticlesFilteredByTopic,
+  getArticlesWithQuery,
 } from "../../utils/http/nc-api";
 import IsLoading from "../IsLoading";
 import ArticlesListItem from "./ArticlesListItem";
 
-const ArticlesList = ({ selectedTopic }) => {
+const ArticlesList = ({ selectedTopic, selectedSort }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [newsArticles, setNewsArticles] = useState([]);
   useEffect(() => {
     setIsLoading(true);
-    const getArticlePromise =
-      selectedTopic === DefaultTopics.TOPICS_ALL
-        ? getAllArticles()
-        : getArticlesFilteredByTopic(selectedTopic.slug);
-    getArticlePromise.then(({ articles }) => {
+    const query = { ...selectedSort };
+    if (selectedTopic !== DefaultTopics.TOPICS_ALL)
+      query.topic = selectedTopic.slug;
+    console.dir(query);
+    getArticlesWithQuery(query).then(({ articles }) => {
       setNewsArticles((curArticles) => {
         setIsLoading(false);
         return articles;
       });
     });
-  }, [selectedTopic]);
+  }, [selectedTopic, selectedSort]);
   const nav = useNavigate();
 
   return (
