@@ -7,23 +7,32 @@ import {
   getArticleById,
 } from "../../utils/http/nc-api";
 import { timeStamp2Date } from "../../utils/time-utils";
+import GenericErrorPage from "../errors/GenericErrorPage";
 import IsLoading from "../IsLoading";
 import CommentsList from "./CommentsList";
 
 const ArticleView = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [pageError, setPageError] = useState(null);
+
   const { article_id } = useParams();
   const [displayedArticle, setDisplayedArticle] = useState({});
   const [showComments, setShowComments] = useState(false);
   const [articleVotes, setArticleVotes] = useState(0);
   useEffect(() => {
-    getArticleById(article_id).then(({ article }) => {
-      setDisplayedArticle((curArticle) => {
-        setIsLoading(false);
-        return article;
+    getArticleById(article_id)
+      .then(({ article }) => {
+        setDisplayedArticle((curArticle) => {
+          setIsLoading(false);
+          return article;
+        });
+      })
+      .catch((error) => {
+        setPageError(error);
       });
-    });
   }, []);
+
+  if (pageError) return <GenericErrorPage errorMessage={pageError.message} />;
 
   const updateVoteBy = (num) => {
     setArticleVotes((curVotes) => {

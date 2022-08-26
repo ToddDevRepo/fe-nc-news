@@ -6,27 +6,34 @@ import PostComment from "./PostComment";
 import IsLoading from "../IsLoading";
 import CommentListItem from "./CommentListItem";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import GenericErrorPage from "../errors/GenericErrorPage";
 
 const CommentsList = ({ article_id, setDisplayedArticle }) => {
   const { currentUser } = useContext(CurrentUserContext);
   const [articleComments, setArticleComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [pageError, setPageError] = useState(null);
   const [isPostingComment, setIsPostingComment] = useState(false);
   useEffect(() => {
-    getAllComments(article_id).then(({ comments }) => {
-      comments.sort((commentA, commentB) => {
-        const diff =
-          new Date(commentA.created_at).getTime() -
-          new Date(commentB.created_at).getTime();
-        return diff;
+    getAllComments(article_id)
+      .then(({ comments }) => {
+        comments.sort((commentA, commentB) => {
+          const diff =
+            new Date(commentA.created_at).getTime() -
+            new Date(commentB.created_at).getTime();
+          return diff;
+        });
+        setArticleComments((curComments) => {
+          setIsLoading(false);
+          return comments;
+        });
+      })
+      .catch((error) => {
+        setPageError(error);
       });
-      setArticleComments((curComments) => {
-        setIsLoading(false);
-        return comments;
-      });
-    });
   }, [article_id]);
 
+  if (pageError) return <GenericErrorPage errorMessage={pageError.message} />;
   return (
     <section className="section__comments-list">
       {!isLoading ? (
