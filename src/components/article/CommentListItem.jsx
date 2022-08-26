@@ -24,20 +24,26 @@ const CommentListItem = ({
             if (shouldDelete) {
               const comment_id = comment.comment_id;
               console.log(comment_id);
-              deleteComment(comment_id).then(() => {
-                setArticleComments((curComments) => {
-                  const newCommentsList = curComments.filter(
-                    (comment) => comment.comment_id !== comment_id
-                  );
-                  setDisplayedArticle((curArticle) => {
-                    return {
-                      ...curArticle,
-                      comment_count: newCommentsList.length,
-                    };
+              deleteComment(comment_id)
+                .then(() => {
+                  setArticleComments((curComments) => {
+                    const newCommentsList = curComments.filter(
+                      (comment) => comment.comment_id !== comment_id
+                    );
+                    setDisplayedArticle((curArticle) => {
+                      return {
+                        ...curArticle,
+                        comment_count: newCommentsList.length,
+                      };
+                    });
+                    return newCommentsList;
                   });
-                  return newCommentsList;
+                })
+                .catch((error) => {
+                  window.alert(
+                    "Something went wrong. Please check your internet connection and try again!"
+                  );
                 });
-              });
             }
           }}
         >
