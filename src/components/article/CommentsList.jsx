@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Endpoints, InternalEndpoints } from "../../Globals";
 import { getAllComments } from "../../utils/http/nc-api";
-import PostComment from "../comment/PostComment";
+import PostComment from "./PostComment";
 import IsLoading from "../IsLoading";
 import CommentListItem from "./CommentListItem";
 
