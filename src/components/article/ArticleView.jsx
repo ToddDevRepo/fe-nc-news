@@ -32,7 +32,6 @@ const ArticleView = () => {
       });
   }, []);
 
-  console.dir(pageError);
   if (pageError)
     return <GenericErrorPage errorMessage={pageError.response.data.msg} />;
 
