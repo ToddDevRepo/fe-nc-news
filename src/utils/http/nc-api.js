@@ -24,12 +24,10 @@ const postByEndpoint = (endpoint, payload) => {
   });
 };
 
-export const getAllArticles = () => {
-  return getByEndpoint(Endpoints.NC_NEWS_ARTICLES_END);
-};
-
-export const getArticlesFilteredByTopic = (topic) => {
-  return getByEndpoint(Endpoints.NC_NEWS_ARTICLES_END, { topic: topic });
+const deleteByEndpoint = (endpoint) => {
+  return ncRequester.delete(endpoint).then(({ data }) => {
+    return data;
+  });
 };
 
 export const getArticlesWithQuery = (query) => {
@@ -45,7 +43,7 @@ export const getAllTopics = () => {
 };
 
 export const getAllComments = (id) => {
-  return getByEndpoint(Endpoints.makeCommentsEndpoint(id));
+  return getByEndpoint(Endpoints.makeArticleCommentsEndpoint(id));
 };
 
 export const changeArticleVoteAtServerBy = (numOfVotes, article_id) => {
@@ -59,7 +57,11 @@ export const changeArticleVoteAtServerBy = (numOfVotes, article_id) => {
 export const postNewCommentForArticle = (article_id, username, comment) => {
   const commentData = { username: username, body: comment };
   return postByEndpoint(
-    Endpoints.makeCommentsEndpoint(article_id),
+    Endpoints.makeArticleCommentsEndpoint(article_id),
     commentData
   );
+};
+
+export const deleteComment = (comment_id) => {
+  return deleteByEndpoint(`${Endpoints.NC_NEWS_COMMENTS}/${comment_id}`);
 };

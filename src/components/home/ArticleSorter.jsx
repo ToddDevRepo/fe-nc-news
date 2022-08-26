@@ -14,7 +14,6 @@ const ArticleSorter = ({ setSelectedSort }) => {
       <select
         onChange={(event) => {
           const sort_by = event.target.value;
-          console.log("Value: " + sort_by);
           setSelectedSort((curSort) => {
             return { ...curSort, sort_by: sort_by };
           });

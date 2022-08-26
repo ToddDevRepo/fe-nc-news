@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Endpoints, InternalEndpoints } from "../../Globals";
 import { getAllComments } from "../../utils/http/nc-api";
-import PostComment from "../comment/PostComment";
+import PostComment from "./PostComment";
 import IsLoading from "../IsLoading";
 import CommentListItem from "./CommentListItem";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const CommentsList = ({ article_id, setDisplayedArticle }) => {
+  const { currentUser } = useContext(CurrentUserContext);
   const [articleComments, setArticleComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isPostingComment, setIsPostingComment] = useState(false);
@@ -50,7 +52,12 @@ const CommentsList = ({ article_id, setDisplayedArticle }) => {
             {articleComments.map((comment) => {
               return (
                 <li key={comment.comment_id}>
-                  <CommentListItem comment={comment} />
+                  <CommentListItem
+                    comment={comment}
+                    currentUser={currentUser}
+                    setArticleComments={setArticleComments}
+                    setDisplayedArticle={setDisplayedArticle}
+                  />
                 </li>
               );
             })}

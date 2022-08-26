@@ -31,7 +31,6 @@ const PostComment = ({
           setCommentBody("");
         })
         .catch((error) => {
-          console.log("http error");
           alert.showAlert(
             "Something went wrong! The comment was not sent.",
             5000

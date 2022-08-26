@@ -6,7 +6,6 @@ import { InternalEndpoints } from "./Globals";
 import ArticleView from "./components/article/ArticleView";
 import { CurrentUserContext } from "./contexts/CurrentUserContext";
 import { useState } from "react";
-import PostComment from "./components/comment/PostComment";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({
