@@ -33,7 +33,8 @@ const ArticlesList = ({ selectedTopic, selectedSort }) => {
   }, [selectedTopic, selectedSort]);
   const nav = useNavigate();
 
-  if (pageError) return <GenericErrorPage errorMessage={pageError} />;
+  if (pageError)
+    return <GenericErrorPage errorMessage={pageError.response.data.msg} />;
   return (
     <section id="section__articles-list">
       {isLoading ? (

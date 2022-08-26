@@ -32,7 +32,9 @@ const ArticleView = () => {
       });
   }, []);
 
-  if (pageError) return <GenericErrorPage errorMessage={pageError.message} />;
+  console.dir(pageError);
+  if (pageError)
+    return <GenericErrorPage errorMessage={pageError.response.data.msg} />;
 
   const updateVoteBy = (num) => {
     setArticleVotes((curVotes) => {

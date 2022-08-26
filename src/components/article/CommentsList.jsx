@@ -33,7 +33,8 @@ const CommentsList = ({ article_id, setDisplayedArticle }) => {
       });
   }, [article_id]);
 
-  if (pageError) return <GenericErrorPage errorMessage={pageError.message} />;
+  if (pageError)
+    return <GenericErrorPage errorMessage={pageError.response.data.msg} />;
   return (
     <section className="section__comments-list">
       {!isLoading ? (
