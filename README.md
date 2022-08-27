@@ -5,7 +5,8 @@ Northcoders News is a social news aggregation, web content rating, and discussio
 Northcoders News has articles which are divided into topics. Each article has user curated ratings and can be up or down voted using the API. Users can also add comments about an article.
 
 You can find a pre-hosted version here:
-<insert link>
+
+<link>
 
 ## To run the application locally:
 
