@@ -46,7 +46,8 @@ const PostComment = ({
         <p id="post-status-alert" role="alert">
           {" "}
         </p>
-        <label htmlFor="textarea__post-comment">Body:</label>
+        <label htmlFor="textarea__post-comment">Comment Body:</label>
+        <br />
         <textarea
           id="textarea__post-comment"
           name="comment-body"
