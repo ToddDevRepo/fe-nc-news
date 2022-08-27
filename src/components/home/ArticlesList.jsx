@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { DefaultTopics, InternalEndpoints } from "../../Globals";
-import {
-  getAllArticles,
-  getArticlesFilteredByTopic,
-  getArticlesWithQuery,
-} from "../../utils/http/nc-api";
+import { getArticlesWithQuery } from "../../utils/http/nc-api";
 import GenericErrorPage from "../errors/GenericErrorPage";
 import IsLoading from "../IsLoading";
 import ArticlesListItem from "./ArticlesListItem";

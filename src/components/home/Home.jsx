@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { DefaultArticleSorts, DefaultTopics } from "../../Globals";
-import IsLoading from "../IsLoading";
 import ArticlesList from "./ArticlesList";
 import ArticleSorter from "./ArticleSorter";
 import TopicSelector from "./TopicSelector";

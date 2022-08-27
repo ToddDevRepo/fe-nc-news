@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { VoteConfig } from "../../Globals";
 import {
   changeArticleVoteAtServerBy,
-  getAllComments,
   getArticleById,
 } from "../../utils/http/nc-api";
 import { timeStamp2Date } from "../../utils/time-utils";
@@ -30,7 +29,7 @@ const ArticleView = () => {
       .catch((error) => {
         setPageError(error);
       });
-  }, []);
+  }, [article_id]);
 
   if (pageError)
     return <GenericErrorPage errorMessage={pageError.response.data.msg} />;
@@ -77,7 +76,9 @@ const ArticleView = () => {
               >
                 &#708;
               </button>
-              <span> Votes: {displayedArticle.votes + articleVotes}</span>
+              <span aria-atomic="true" aria-live="polite">
+                Votes: {displayedArticle.votes + articleVotes}
+              </span>
               <button
                 id="button__dn-vote-article"
                 aria-label="down vote article"
