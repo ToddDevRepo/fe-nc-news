@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# NC News App (Front-end)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Northcoders News is a social news aggregation, web content rating, and discussion website.
 
-## Available Scripts
+Northcoders News has articles which are divided into topics. Each article has user curated ratings and can be up or down voted using the API. Users can also add comments about an article.
 
-In the project directory, you can run:
+You can find a pre-hosted version here:
+<insert link>
 
-### `npm start`
+## To run the application locally:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Go to the GitHub repository at:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+https://github.com/ToddDevRepo/fe-nc-news
 
-### `npm test`
+2. Fork your own version of the project.
+3. On your fork, click 'Code' and copy the http clone link.
+4. Using your local machine command-line, navigate to the folder you want it in and type:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+$ git clone <link to fork>
 
-### `npm run build`
+5. Install the dependencies by typing:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+$ npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+6. Start the application by typing:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+$ npm start
 
-### `npm run eject`
+This will run a local instance of the application which accesses our pre-hosted backend. The hosted backend can be found here:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+https://nc-news-api-live.herokuapp.com/api
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+7. If you wish to use a local version of the backend, you can find it here:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+https://github.com/ToddDevRepo/nc-news-api
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Follow the instructions to run the backend, then goto the Urls class in the Globals.js file of the front end project and set the static NC_NEWS_URL variable to the backend on your local host.
 
-## Learn More
+## A Note on Styling
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Being visually impaired, I have spent a minimal amount of time styling the app; as such, it is best to consider the app in terms of its design, structure and functionality rather than its visual appearance. As an active screen-reader user myself, I have also made some effort to consider accessibility both in design and in operation. For instance, when comments are posted successfully or when an error occurs, a message will not just be displayed to the viewer, but also read out by the screen-reader. Consideration has also been given to screen-reader Navigation, e.g. headers have been arranged so that screen-reader users can easily navigate the website and quickly explore articles of interest.

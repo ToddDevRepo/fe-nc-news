@@ -6,6 +6,7 @@ import { InternalEndpoints } from "./Globals";
 import ArticleView from "./components/article/ArticleView";
 import { CurrentUserContext } from "./contexts/CurrentUserContext";
 import { useState } from "react";
+import ResourceNotFoundPage from "./components/errors/ResourceNotFoundPage";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({
@@ -26,6 +27,7 @@ function App() {
               path={InternalEndpoints.ARTICLES_BY_ID_END}
               element={<ArticleView />}
             />
+            <Route path="*" element={<ResourceNotFoundPage />} />
           </Routes>
         </main>
       </div>

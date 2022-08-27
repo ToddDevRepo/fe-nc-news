@@ -23,7 +23,6 @@ const CommentListItem = ({
             );
             if (shouldDelete) {
               const comment_id = comment.comment_id;
-              console.log(comment_id);
               deleteComment(comment_id)
                 .then(() => {
                   setArticleComments((curComments) => {
