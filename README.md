@@ -1,12 +1,12 @@
 # NC News App (Front-end)
 
-Northcoders News is a social news aggregation, web content rating, and discussion website.
+Northcoders News is a demonstration social news aggregation, web content rating, and discussion website.
 
 Northcoders News has articles which are divided into topics. Each article has user curated ratings and can be up or down voted using the API. Users can also add comments about an article.
 
 You can find a pre-hosted version here:
 
-<link>
+https://fe-nc-news-app.herokuapp.com/
 
 ## To run the application locally:
 
